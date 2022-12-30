@@ -1,7 +1,14 @@
 const express = require('express');
 const app = express();
 const port = 5000;
+const mongoose = require("mongoose");
 
+// connect to the db
+mongoose.connect('mongodb+srv://admin:adminuser@habesha_tech_shop.fvd6c2e.mongodb.net/?retryWrites=true&w=majority').
+then(console.log('connection to db successful')).catch((err) => {
+    console.log(err);
+    // need to handle this, if connection not successful whole appliction will stop
+})
 
 
 // decide routes
@@ -14,8 +21,8 @@ app.get('/', (req, res) => {
 
 //2. /category
 app.get('categories', (req, res) => {
-    // fetch categories for dsb
-    // const categories = db.categories.find(); so to do this I need to have a databse first
+    // fetch categories from db
+    // const categories = db.categories.find(); so to do this I need to have a database first
     // send obj to client
     // res.send(categories)
 })
